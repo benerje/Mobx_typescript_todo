@@ -9,6 +9,14 @@ export interface Todo {
   isedit:boolean
 }
 
+export interface TodoList {
+  total: [];
+  completed: [];
+  notCompleted:[]
+}
+
+
+
 class TodoStore {
   constructor() {
     reaction(
@@ -68,9 +76,9 @@ class TodoStore {
 
   @computed get info() {
     return {
-      total: this.todos.length,
-      completed: this.todos.filter(todo => todo.completed).length,
-      notCompleted: this.todos.filter(todo => !todo.completed).length
+      total: this.todos,
+      Completed: this.todos.filter(todo => todo.completed),
+      notCompleted: this.todos.filter(todo => !todo.completed)
     };
   }
 }
